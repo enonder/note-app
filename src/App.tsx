@@ -6,6 +6,7 @@ import NoteCard from './components/NoteCard'
 import TextArea from './components/TextArea'
 import Column from './components/Column'
 import Header from './components/Header'
+import Box from './components/Box'
 
 function App() {
 
@@ -66,7 +67,7 @@ function App() {
 
 
   return (
-    <div style={{ maxWidth: 800, margin: "50px auto" }}>
+    <Box style={{ maxWidth: 800, margin: "50px auto" }}>
       <Row style={{ alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
         <Header>My-Notes</Header>
         <Button type='primary' onClick={() => addNote()}>+ Add</Button>
@@ -76,7 +77,7 @@ function App() {
         <Column>
           {notes.map((note, index) => {
             return (
-              <Row key={index}>
+              <Row key={index} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                 <NoteCard title={note.title} onClick={() => { setCurrentNote({ ...note, index }) }} />
                 <Button type='danger' onClick={() => deleteNote(index)}>Delete</Button>
               </Row>)
@@ -89,9 +90,7 @@ function App() {
           <Button type='success' onClick={() => saveNote()}>Save</Button>
         </Column>
       </Row>
-
-
-    </div>
+    </Box>
   )
 
 }
