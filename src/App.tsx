@@ -68,7 +68,7 @@ function App() {
     <Box style={{ maxWidth: 800, margin: "50px auto" }}>
       <Row style={{ alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
         <Header>My-Notes</Header>
-        <Button type='outline-primary' onClick={() => addNote()}>New Note</Button>
+        {currentNote.index !== null && <Button type='outline-primary' onClick={() => addNote()}>New Note</Button>}
       </Row>
 
       <Row>
