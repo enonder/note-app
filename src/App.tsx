@@ -72,12 +72,12 @@ function App() {
       </Row>
 
       <Row>
-        <Column>
+        {notes.length > 0 && <Column>
           {notes.map((note, index) => {
             return (
               <NoteCard key={index} title={note.title} onClick={() => { setCurrentNote({ ...note, index }) }} />)
           })}
-        </Column>
+        </Column>}
 
         <Column style={{ width: '100%' }}>
           <Input onChange={handleTitle} value={currentNote.title} placeholder='Subject' />
