@@ -52,7 +52,6 @@ function App() {
 
   }
 
-
   function handleTitle(e: any) {
     setCurrentNote({
       title: e.target.value, description: currentNote.description, index: currentNote.index
@@ -65,29 +64,29 @@ function App() {
     })
   }
 
-
   return (
     <Box style={{ maxWidth: 800, margin: "50px auto" }}>
       <Row style={{ alignItems: 'center', justifyContent: 'space-between', margin: '12px 0' }}>
         <Header>My-Notes</Header>
-        <Button type='primary' onClick={() => addNote()}>+ Add</Button>
+        <Button type='outline-primary' onClick={() => addNote()}>New Note</Button>
       </Row>
 
       <Row>
         <Column>
           {notes.map((note, index) => {
             return (
-              <Row key={index} style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                <NoteCard title={note.title} onClick={() => { setCurrentNote({ ...note, index }) }} />
-                <Button type='danger' onClick={() => deleteNote(index)}>Delete</Button>
-              </Row>)
+              <NoteCard key={index} title={note.title} onClick={() => { setCurrentNote({ ...note, index }) }} />)
           })}
         </Column>
 
         <Column style={{ width: '100%' }}>
           <Input onChange={handleTitle} value={currentNote.title} placeholder='Subject' />
           <TextArea onChange={handleDescription} value={currentNote.description}></TextArea>
-          <Button type='success' onClick={() => saveNote()}>Save</Button>
+          <Row style={{ gap: 10, alignItems: 'center', justifyContent: 'end' }}>
+            {currentNote.index !== null && <Button style={{ width: 75 }} type='outline-secondary' onClick={() => deleteNote(currentNote.index)}>Delete</Button>}
+            <Button style={{ width: 75 }} type='primary' onClick={() => saveNote()}>Save</Button>
+          </Row>
+
         </Column>
       </Row>
     </Box>
